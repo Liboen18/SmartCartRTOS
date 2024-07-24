@@ -62,7 +62,7 @@ all: SmartCartRTOS.elf secondary-outputs
 
 # 工具调用
 SmartCartRTOS.elf: $(OBJS) $(USER_OBJS)
-	@	@	riscv-none-embed-gcc -march=rv32imacxw -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized  -g -T "F:\SmartCartRTOS\Projects\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"SmartCartRTOS.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -o "SmartCartRTOS.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	@	@	riscv-none-embed-gcc -march=rv32imacxw -mabi=ilp32 -msmall-data-limit=8 -msave-restore -Os -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -Wunused -Wuninitialized  -g -T "D:\SmartcartRTOS\Projects\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"SmartCartRTOS.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -o "SmartCartRTOS.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@	@
 SmartCartRTOS.hex: SmartCartRTOS.elf
 	@	riscv-none-embed-objcopy -O ihex "SmartCartRTOS.elf"  "SmartCartRTOS.hex"

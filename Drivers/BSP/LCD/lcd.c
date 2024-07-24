@@ -837,6 +837,20 @@ void LCD_Init(void)
 	LCD_Clear(LIGHTBLUE);
 }  
 
+//SSD1963 背光设置
+//pwm:背光等级,0~100.越大越亮.
+void LCD_SSD_BackLightSet(u8 pwm)
+{
+    LCD_WR_REG(0xBE);           //配置PWM输出
+    LCD_WR_DATA(0x05);          //1设置PWM频率
+    LCD_WR_DATA(pwm * 2.55);    //2设置PWM占空比
+    LCD_WR_DATA(0x01);          //3设置C
+    LCD_WR_DATA(0xFF);          //4设置D
+    LCD_WR_DATA(0x00);          //5设置E
+    LCD_WR_DATA(0x00);          //6设置F
+}
+
+
 /*********************************************************************
  * @fn      LCD_Clear
  *

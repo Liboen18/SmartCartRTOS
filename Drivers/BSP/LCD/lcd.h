@@ -145,6 +145,7 @@ void LCD_Color_Fill(uint16_t sx, uint16_t sy, uint16_t ex, uint16_t ey, uint16_t
 void LCD_DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2);
 void LCD_DrawLine(u16 x1, u16 y1, u16 x2, u16 y2);
 void LCD_Draw_Circle(u16 x0,u16 y0,u8 r);
+void LCD_SSD_BackLightSet(u8 pwm);
 #endif
 
 

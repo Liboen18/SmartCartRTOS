@@ -222,7 +222,7 @@ void vKeyScanTask(void *pvParameters)
                     Pages_X_delete(receivedProduct);
                     vTaskDelay(1000);
                     xSemaphoreGive(xBinarySemaphore3);
-                    deleteProduct(&ProductList,receivedProduct);
+                    deleteProduct(&ProductList,receivedProduct.productID);
                     if(xSemaphoreTake(xBinarySemaphore4,portMAX_DELAY)==pdTRUE)
                     {
                         renderMainPage();

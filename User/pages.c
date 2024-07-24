@@ -30,6 +30,7 @@
 void renderMainPage()
 {
     LCD_Clear(BLACK);
+    LCD_SSD_BackLightSet(10);
     POINT_COLOR=WHITE;
     LCD_Color_Fill(40,24,760,456,GRAY);
     LCD_DrawLine(20,24,20,456);
@@ -54,17 +55,17 @@ void renderMainPage()
 
     LCD_ShowString(100,200,5*BIGCHAR,32,32,"A:Add");
     LCD_ShowString(320,200,8*BIGCHAR,32,32,"B:Delete");
-    LCD_ShowString(570,200,5*BIGCHAR,32,32,"C:Add");
-    LCD_ShowString(600,240,5*BIGCHAR,32,32,"Fruit");
-    LCD_ShowString(100,345,9*BIGCHAR,32,32,"D:Delete");
-    LCD_ShowString(130,385,5*BIGCHAR,32,32,"Fruit");
-    LCD_ShowString(320,345,6*BIGCHAR,32,32,"E:Back");
-    LCD_ShowString(570,345,6*BIGCHAR,32,32,"F:Pay");
+    LCD_ShowString(570,200,6*BIGCHAR,32,32,"C:Back");
+    LCD_ShowString(100,345,9*BIGCHAR,32,32,"D:Current ");
+    LCD_ShowString(130,385,7*BIGCHAR,32,32,"product");
+    LCD_ShowString(320,345,6*BIGCHAR,32,32,"E:Pay");
+    LCD_ShowString(570,345,3*BIGCHAR,32,32,"WPU");
 
 }
 void Pages_add()
 {
         LCD_Clear(BLACK);
+        LCD_SSD_BackLightSet(10);
         POINT_COLOR=WHITE;
         LCD_Color_Fill(40,24,760,456,GRAY);
         LCD_DrawLine(20,24,20,456);
@@ -77,13 +78,14 @@ void Pages_add()
         LCD_Draw_Circle(760,456,20);
         LCD_Draw_Circle(760,24,20);
         //LCD_Color_Fill(40,24,760,456,GRAY);
-        LCD_ShowString(250,100,11*BIGCHAR,32,32,"Please show");
+        LCD_ShowString(250,220,11*BIGCHAR,32,32,"Please show");
 
 }
 void Pages_X_add(ProductInfo product)
 {
 
     LCD_Clear(BROWN);
+    LCD_SSD_BackLightSet(10);
     LCD_Color_Fill(200,120,600,240,LGRAY );
     LCD_ShowString(200, 180, (strlen((const char *)product.productName))*BIGCHAR, 32, 32,(u8*) product.productName);
     char priceStr[MAX_STRING_LENGTH]; // 用于存储 productPrice 的字符串表示
@@ -95,6 +97,7 @@ void Pages_X_add(ProductInfo product)
 void Pages_delete()
 {
     LCD_Clear(BLACK);
+    LCD_SSD_BackLightSet(10);
     POINT_COLOR=WHITE;
     LCD_Color_Fill(40,24,760,456,GRAY);
     LCD_DrawLine(20,24,20,456);
@@ -114,6 +117,7 @@ void Pages_X_delete(ProductInfo product)
 {
 
     LCD_Clear(WHITE);
+    LCD_SSD_BackLightSet(10);
     LCD_Color_Fill(200,120,600,240,LGRAY );
     LCD_ShowString(200, 180, (strlen((const char *)product.productName))*BIGCHAR, 32, 32,(u8*) product.productName);
     char priceStr[MAX_STRING_LENGTH]; // 用于存储 productPrice 的字符串表示
@@ -131,6 +135,7 @@ void Pages_X_delete(ProductInfo product)
 void Pages_Pay()
 {
     LCD_Clear(WHITE);
+    LCD_SSD_BackLightSet(10);
     LCD_Color_Fill(200,120,600,240,GRAY );
     LCD_ShowString(250, 180,10*BIGCHAR , 32, 32, "PLEASE PAY");
     LCD_ShowString(300, 400,7*BIGCHAR,32,32, "QR CODE");
@@ -168,6 +173,7 @@ void renderCurrentProductsPage(ProductInfoList *list)
     ProductInfo *current = list->head;
     char buffer[256];  // 临时字符串缓冲区，用于格式化信息
     LCD_Clear(BLACK);
+    LCD_SSD_BackLightSet(10);
     while (Size > 10) {
         for (i = 1; i <= 10 && current != NULL; i++) {
             snprintf(buffer, sizeof(buffer), "Name: %s", current->productName);
@@ -199,6 +205,7 @@ void Pages_error()
 {
 
     LCD_Clear(WHITE);
+    LCD_SSD_BackLightSet(10);
     LCD_Color_Fill(200,120,600,240,LGRAY );
     LCD_ShowString(200, 180, 13*BIGCHAR, 32, 32,"weight error!");
     delay_ms(4000);
